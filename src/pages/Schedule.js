@@ -56,23 +56,15 @@ const Schedule = () => {
                 </div>
 
                 {schedule.frequency === 'Weekly' && (
-                    <div style={{ marginTop: '24px' }}>
+                    <div className="mt-6">
                         <label className="form-label">Select Days</label>
-                        <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
+                        <div className="flex gap-3 mt-2">
                             {weekDays.map(day => (
                                 <button
                                     key={day}
                                     type="button"
                                     onClick={() => handleDayToggle(day)}
-                                    style={{
-                                        padding: '8px 16px',
-                                        borderRadius: '20px',
-                                        border: `1px solid ${schedule.days.includes(day) ? '#00AB55' : '#E0E0E0'}`,
-                                        background: schedule.days.includes(day) ? '#00AB55' : '#fff',
-                                        color: schedule.days.includes(day) ? '#fff' : '#637381',
-                                        cursor: 'pointer',
-                                        fontWeight: 600
-                                    }}
+                                    className={`px-4 py-2 rounded-[20px] border transition-colors cursor-pointer font-semibold ${schedule.days.includes(day) ? 'bg-primary border-primary text-white' : 'bg-white border-[#E0E0E0] text-text-secondary'}`}
                                 >
                                     {day.slice(0, 3)}
                                 </button>
@@ -81,7 +73,7 @@ const Schedule = () => {
                     </div>
                 )}
             </div>
-            <div style={{ textAlign: 'right', marginTop: '24px', display: 'flex', justifyContent: 'flex-end', gap: '12px' }}>
+            <div className="text-right mt-6 flex justify-end gap-3">
                 <button className="btn" onClick={() => navigate(-1)}>
                     Previous
                 </button>

@@ -37,6 +37,17 @@ const CreateJourneyPlan = () => {
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
+
+        if (name === 'company') {
+            const selectedCompany = options.companies.find(c => c.id === value);
+            setFormData(prev => ({
+                ...prev,
+                company: value,
+                companyName: selectedCompany ? selectedCompany.name : ''
+            }));
+            return;
+        }
+
         setFormData(prev => ({
             ...prev,
             [name]: type === 'checkbox' ? checked : value
@@ -72,7 +83,7 @@ const CreateJourneyPlan = () => {
                         </div>
                     </div>
 
-                    <div className="form-group" style={{ marginBottom: '24px' }}>
+                    <div className="form-group mb-6">
                         <label className="form-label">Route Name <span>*</span></label>
                         <input
                             type="text"
@@ -136,7 +147,7 @@ const CreateJourneyPlan = () => {
                             >
                                 <option value="">Select Company</option>
                                 {options.companies && options.companies.map((c, i) => (
-                                    <option key={i} value={c}>{c}</option>
+                                    <option key={c.id} value={c.id}>{c.name}</option>
                                 ))}
                             </select>
                         </div>
@@ -211,7 +222,7 @@ const CreateJourneyPlan = () => {
                     </div>
                 </div>
 
-                <div style={{ textAlign: 'right' }}>
+                <div className="text-right">
                     <button type="submit" className="btn btn-primary">Next Step</button>
                 </div>
             </form>
