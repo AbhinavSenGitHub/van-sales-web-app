@@ -32,7 +32,7 @@ const Review = () => {
             .then(res => res.json())
             .then(data => {
                 alert('Journey Plan Created Successfully!');
-                navigate('/');
+                navigate('/journey-plans');
             })
             .catch(err => alert('Error creating plan'));
     };
